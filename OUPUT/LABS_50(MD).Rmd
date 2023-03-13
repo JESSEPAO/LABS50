@@ -1,0 +1,76 @@
+------------------------------------------
+title: "LABS_50"
+author: "JESSICA PAOLA AGUILAR SERVIN"
+date: "2023-03-13"
+output: html_document
+-----------------------------------------------
+
+##################################    
+ LABORATORIO MANIPULAR LEYENDAS 
+##################################
+
+LABORATORIO - Gráficos en R con ggplot2 para Ciencia de Datos
+BOXPLOT EN R (Diagrama de cajas y vigotes)
+
+instalando paquete con los datos
+install.packages("gapminder")
+install.packages("ggplot2")
+
+cargar libreria ggplot2 y gapminder
+```{r}
+library(ggplot2)
+library(gapminder)
+```
+
+cargando datos a entorno
+```{r}
+data("gapminder")
+```
+
+filtrando por año 2007
+```{r}
+gapminder2007 <- gapminder[gapminder$year == '2007', ]
+```
+
+colocando texto base
+```{r}
+p <- ggplot(data = gapminder2007,
+            mapping = aes(x= gdpPercap,
+                          y=lifeExp,
+                          color= continent))+
+  geom_point()
+```
+
+mostrar la grafica
+```{r}
+p
+```
+
+quitar titulo de la leyenda
+```{r}
+p + theme(legend.title = element_blank())
+```
+
+quitar toda la leyenda
+```{r}
+p + theme(legend.position = "none")
+```
+
+
+cambiar la leyenda de posición
+opciones: # rigth, left, bottom, top
+```{r}
+p + theme(legend.position = "top")
+p + theme(legend.position = "right")
+p + theme(legend.position = "left")
+p + theme(legend.position = "bottom")
+```
+
+cambiar con coordenadas de 0 a 1
+```{r}
+p + theme(legend.position = c(0.5,0.5))
+
+p + theme(legend.position = c(0.8,0.3))
+```
+
+
